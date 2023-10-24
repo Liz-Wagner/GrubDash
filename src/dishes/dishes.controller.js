@@ -8,7 +8,7 @@ const nextId = require("../utils/nextId");
 
 // TODO: Implement the /dishes handlers needed to make the tests pass
 
-//Check eash property has data
+//Check each property has data
 function bodyDataHas(propertyName) {
     return function (req, res, next) {
         const { data = {} } = req.body;
