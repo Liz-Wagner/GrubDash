@@ -133,16 +133,15 @@ function read(req, res) {
 
 //PUT
 function update(req, res) {
-    const orderId = req.params.orderId;
     const { deliverTo, mobileNumber, status, dishes } = req.body.data;
-    const updateOrder = {
-        id: orderId,
-        deliverTo,
-        mobileNumber,
-        status,
-        dishes
-    };
-    return res.json({ data: updateOrder })
+    const order = res.locals.order
+
+        order.deliverTo = deliverTo,
+        order.mobileNumber = mobileNumber,
+        order.status = status,
+        order.dishes = dishes
+
+    return res.json({ data: order })
 };
 
 //DELETE

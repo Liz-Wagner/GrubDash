@@ -90,16 +90,14 @@ function create(req, res) {
   }
   
   function update(req, res) {
-    const dishId = req.params.dishId;
     const { name, description, price, image_url } = req.body.data;
-    const updateDish = {
-        id: dishId,
-        name: name,
-        description: description,
-        price: price,
-        image_url: image_url
-    };
-    return res.json({ data: updateDish })
+
+    res.locals.dish.name = name,
+    res.locals.dish.description = description,
+    res.locals.dish.price = price,
+    res.locals.dish.image_url = image_url
+
+    return res.json({ data: res.locals.dish })
   }
 
 module.exports = {
